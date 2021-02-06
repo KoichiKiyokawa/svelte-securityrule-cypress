@@ -1,0 +1,22 @@
+<script lang="ts">
+  import { goto } from '@roxi/routify'
+  import { AuthService } from '@/services/AuthService'
+
+  let email: string
+  let password: string
+
+  let loading = false
+  function onSubmit() {
+    loading = true
+    AuthService.login(email, password)
+      .then($goto('/index'))
+      .catch(() => alert('ログインに失敗しました'))
+      .finally(() => (loading = false))
+  }
+</script>
+
+<form on:submit|preventDefault={onSubmit}>
+  <input type="email" autocomplete="email" />
+  <input type="password" autocomplete="current-password" />
+  <button disabled={loading}>ログイン</button>
+</form>
