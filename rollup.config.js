@@ -4,7 +4,6 @@ import resolve from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
 import getConfig from '@roxi/routify/lib/utils/config'
 import { copySync, removeSync } from 'fs-extra'
-import path from 'path'
 import postcssImport from 'postcss-import'
 import Hmr from 'rollup-plugin-hot'
 import livereload from 'rollup-plugin-livereload'
@@ -50,7 +49,7 @@ export default {
   preserveEntrySignatures: false,
   input: ['src/main.ts'],
   output: {
-    sourcemap: true,
+    sourcemap: !production,
     format: 'esm',
     dir: buildDir,
     // for performance, disabling filename hashing in development
