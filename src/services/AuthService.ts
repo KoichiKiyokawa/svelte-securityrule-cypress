@@ -8,6 +8,10 @@ export class AuthService {
     return auth.signIn(email, password)
   }
 
+  static logout(): Promise<void> {
+    return auth.signOut()
+  }
+
   static async checkAuth(): Promise<boolean> {
     try {
       await auth.fetchProfile()

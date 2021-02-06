@@ -8,6 +8,7 @@ declare module 'firebase-auth-lite' {
     authorizedRequest(input: RequestInfo, init?: RequestInit): Promise<Response>
     fetchProfile(): Promise<void>
     signIn(email: string, password: string): Promise<void>
+    signOut(): Promise<void>
     listen(cb: (user: any) => void): void
   }
 }

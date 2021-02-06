@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { Router } from "@roxi/routify";
-  import { routes } from "../.routify/routes";
+  import { Router } from '@roxi/routify'
+  import { routes } from '../.routify/routes'
 </script>
 
-<style  global>
-  @import "../assets/global.css";
-</style>
-
 <Router {routes} />
+
+<style global>
+  @import '../assets/global.css';
+</style>
