@@ -7,7 +7,7 @@
 
   let user: User | null = null
   onMount(async () => {
-    user = await new UserRepository().find($params.id)
+    user = await new UserRepository().find($params.userID)
   })
 </script>
 
@@ -19,4 +19,5 @@
   </p>
   <span>氏名:</span><span>{user.name}</span>
   <span>誕生日:</span><span>{dayjs(user.birthday).format('YYYY/MM/DD')}</span>
+  <a href={$url('./posts')}>投稿一覧</a>
 {/if}

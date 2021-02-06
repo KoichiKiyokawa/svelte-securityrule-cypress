@@ -1,14 +1,16 @@
 <script lang="ts">
+  import type { WithID } from '@/models/base/repository'
+
   import type { Post } from '@/models/post/entity'
   import { PostRepository } from '@/models/post/repository'
-  import { params } from '@roxi/routify'
+  import { params, url } from '@roxi/routify'
   import { onMount } from 'svelte'
 
   let form: Omit<Post, 'authorName'> = { title: '', body: '' }
-  let posts: Post[] = []
+  let posts: WithID<Post>[] = []
   let loading = false
 
-  $: postRepo = new PostRepository($params.id)
+  $: postRepo = new PostRepository($params.userID)
 
   onMount(async () => {
     posts = await postRepo.all()
@@ -48,10 +50,31 @@
 
 <ul>
   {#each posts as post}
-    <p>タイトル：{post.title}</p>
-    <p>投稿者：{post.authorName}</p>
-    <div>
-      <p>本文：{substring(post.body)}</p>
-    </div>
+    <a href={$url('./:postID', { postID: post.id })} class="card">
+      <span class="title">{post.title}</span>
+      <span class="body">{substring(post.body)}</span>
+      <span class="author">{post.authorName}</span>
+    </a>
   {/each}
 </ul>
+
+<style>
+  .card {
+    display: block;
+    max-width: 640px;
+    border: 1px solid #111;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 10px;
+  }
+  .card + .card {
+    margin-top: 1rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .author {
+    display: block;
+    color: #777777;
+  }
+</style>

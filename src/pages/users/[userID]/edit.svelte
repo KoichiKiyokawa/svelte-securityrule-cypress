@@ -14,7 +14,7 @@
 
   let loading = false
   onMount(async () => {
-    const { id, ...userData } = await new UserRepository().find($params.id)
+    const { id, ...userData } = await new UserRepository().find($params.userID)
     form = { ...userData, birthday: dayjs(userData.birthday).format('YYYY-MM-DD') }
   })
 
@@ -22,7 +22,7 @@
     loading = true
 
     new UserRepository()
-      .update($params.id, { ...form, birthday: new Date(form.birthday) })
+      .update($params.userID, { ...form, birthday: new Date(form.birthday) })
       .then(() => $goto('/users/:id'))
       .catch((err) => {
         console.error(err)
