@@ -11,11 +11,15 @@
   })
 </script>
 
-<div class="card">
-  <span class="title">{post?.title}</span>
-  <span class="body">{post?.body}</span>
-  <span class="author">{post?.authorName}</span>
-</div>
+{#if post == null}
+  <span>Loading...</span>
+{:else}
+  <div class="card">
+    <span class="title">{post?.title}</span>
+    <span class="body">{post?.body}</span>
+    <span class="author">{post?.authorName}</span>
+  </div>
+{/if}
 
 <style>
   .card {
