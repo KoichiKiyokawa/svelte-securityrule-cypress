@@ -75,6 +75,7 @@
   }
   .author {
     display: block;
+    text-align: right;
     color: #777777;
   }
 </style>
