@@ -22,7 +22,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 8px;
+    padding: 0 24px;
+    color: white;
     background-color: tomato;
   }
 
