@@ -9,14 +9,17 @@
   function onSubmit() {
     loading = true
     AuthService.login(email, password)
-      .then($goto('/index'))
-      .catch(() => alert('ログインに失敗しました'))
+      .then(() => $goto('/index'))
+      .catch((err) => {
+        console.error(err)
+        alert('ログインに失敗しました')
+      })
       .finally(() => (loading = false))
   }
 </script>
 
 <form on:submit|preventDefault={onSubmit}>
-  <input type="email" autocomplete="email" />
-  <input type="password" autocomplete="current-password" />
+  <input type="email" bind:value={email} autocomplete="email" />
+  <input type="password" bind:value={password} autocomplete="current-password" />
   <button disabled={loading}>ログイン</button>
 </form>

@@ -4,8 +4,10 @@ declare module '@roxi/routify/hmr' {
 
 declare module 'firebase-auth-lite' {
   export default class Auth {
-    constructor(apiKey: string)
+    constructor({ apiKey: string })
     authorizedRequest(input: RequestInfo, init?: RequestInit): Promise<Response>
+    fetchProfile(): Promise<void>
     signIn(email: string, password: string): Promise<void>
+    listen(cb: (user: any) => void): void
   }
 }
