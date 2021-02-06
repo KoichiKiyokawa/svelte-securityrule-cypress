@@ -41,6 +41,7 @@
     ]
   },
   "dependencies": {
+    "dayjs": "^1.10.4",
     "firebase-auth-lite": "^0.8.8",
     "firebase-firestore-lite": "^1.0.2"
   },

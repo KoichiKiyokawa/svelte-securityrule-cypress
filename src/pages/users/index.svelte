@@ -1,11 +1,12 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { goto } from '@roxi/routify'
+  import { goto, url } from '@roxi/routify'
   import { UserRepository } from '@/models/user/repository'
   import { AuthService } from '@/services/AuthService'
   import type { User } from '@/models/user/entity'
+  import type { WithID } from '@/models/base/repository'
 
-  let users: User[] = []
+  let users: WithID<User>[] = []
 
   let loading = false
   onMount(async () => {
@@ -25,7 +26,7 @@
   <h1>ユーザー一覧</h1>
   <ul>
     {#each users as user}
-      <li>{user.name}</li>
+      <li><a href={$url('/users/:id', { id: user.id })}>{user.name}</a></li>
     {/each}
   </ul>
 {/if}
