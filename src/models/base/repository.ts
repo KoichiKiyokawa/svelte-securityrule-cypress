@@ -36,6 +36,12 @@ export abstract class BaseRepository<T extends Object> {
     })
   }
 
+  async create(data: T): Promise<WithID<T>> {
+    const res = await db.ref(this.collectionName).add(data)
+    if (res == null) throw Error('no id returned after create')
+    return { ...data, id: res.id }
+  }
+
   async update(id: string, data: T): Promise<WithID<T>> {
     await db.ref(`${this.collectionName}/${id}`).update(data, { updateMask: false })
     return { ...data, id }
