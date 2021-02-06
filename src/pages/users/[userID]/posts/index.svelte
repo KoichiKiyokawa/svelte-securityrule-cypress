@@ -65,7 +65,7 @@
     border: 1px solid #777;
     padding: 8px;
     border-radius: 8px;
-    box-shadow: 10px;
+    box-shadow: 0 0 3px;
   }
   .card + .card {
     margin-top: 1rem;
