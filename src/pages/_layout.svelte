@@ -11,8 +11,11 @@
   <h1>Demo App</h1>
   <button on:click={logout}>ログアウト</button>
 </nav>
-<!-- routify:options preload="proximity" -->
-<slot />
+
+<main>
+  <!-- routify:options preload="proximity" -->
+  <slot />
+</main>
 
 <style>
   nav {
@@ -21,5 +24,9 @@
     align-items: center;
     padding: 0 8px;
     background-color: tomato;
+  }
+
+  main {
+    padding: 24px;
   }
 </style>
