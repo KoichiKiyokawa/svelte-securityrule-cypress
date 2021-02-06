@@ -21,7 +21,7 @@
   .card {
     display: block;
     max-width: 640px;
-    border: 1px solid #111;
+    border: 1px solid #777;
     padding: 8px;
     border-radius: 8px;
     box-shadow: 10px;

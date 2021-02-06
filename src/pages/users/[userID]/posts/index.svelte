@@ -45,7 +45,7 @@
     <textarea bind:value={form.body} />
   </label>
 
-  <button>送信</button>
+  <button disabled={loading}>送信</button>
 </form>
 
 <ul>
@@ -62,7 +62,7 @@
   .card {
     display: block;
     max-width: 640px;
-    border: 1px solid #111;
+    border: 1px solid #777;
     padding: 8px;
     border-radius: 8px;
     box-shadow: 10px;
