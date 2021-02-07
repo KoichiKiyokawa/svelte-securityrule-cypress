@@ -43,7 +43,7 @@ export abstract class BaseRepository<T extends Object> {
   }
 
   async update(id: string, data: T): Promise<WithID<T>> {
-    await db.ref(`${this.collectionName}/${id}`).update(data, { updateMask: false })
+    await db.ref(`${this.collectionName}/${id}`).update(data)
     return { ...data, id }
   }
 }
